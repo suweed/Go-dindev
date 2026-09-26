@@ -1,39 +1,39 @@
-export interface Transaccion {
-  fuente: string;
-  monto: number;
-  dia: number;
+export interface Transaction {
+  source: string;
+  amount: number;
+  day: number;
 }
 
-export interface EstadoDinero {
-  valor: number;
-  ahorrosIniciales: number;
-  historial: Transaccion[];
+export interface MoneyState {
+  value: number;
+  initialSavings: number;
+  history: Transaction[];
 }
 
-export interface OpcionComida {
-  nombre: string;
-  precio: number;
+export interface FoodOption {
+  name: string;
+  price: number;
 }
 
-export interface OpcionBebida {
-  nombre: string;
-  precio: number;
+export interface DrinkOption {
+  name: string;
+  price: number;
 }
 
-export type TipoTransporte = 'a_pie' | 'camion' | 'auto';
+export type TransportType = 'on_foot' | 'bus' | 'car';
 
-export interface ConfigDinero {
-  ahorroInicial: number;
-  transporte: Record<TipoTransporte, number>;
-  comida: { opciones: OpcionComida[] };
-  bebida: { opciones: OpcionBebida[] };
-  ropa: { oficina: number; comoda: number };
-  actividades: { tv: number; salir: number };
-  eventos: { accidente: number; multa: number; enfermedad: number };
+export interface MoneyConfig {
+  initialSavings: number;
+  transport: Record<TransportType, number>;
+  food: { options: FoodOption[] };
+  drinks: { options: DrinkOption[] };
+  clothes: { office: number; comfortable: number };
+  activities: { tv: number; goingOut: number };
+  events: { accident: number; fine: number; illness: number };
 }
 
-export interface Resultado {
+export interface Result {
   ok: boolean;
-  estado: EstadoDinero;
+  state: MoneyState;
   error?: string;
 }

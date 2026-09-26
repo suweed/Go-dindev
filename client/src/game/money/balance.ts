@@ -1,26 +1,26 @@
-import type { ConfigDinero } from './types';
+import type { MoneyConfig } from './types';
 
-// Defaults locales que reflejan la tabla `configuraciones` de la BD (tipo 'dinero').
-// La fuente de verdad es la BD; este default se usa para desarrollo sin backend
-// y como respaldo si la BD no responde.
-export const CONFIG_DINERO_DEFAULT: ConfigDinero = {
-  ahorroInicial: 10000,
-  transporte: { a_pie: 0, camion: 60, auto: 100 },
-  comida: {
-    opciones: [
-      { nombre: 'torta', precio: 50 },
-      { nombre: 'comida corrida', precio: 100 },
-      { nombre: 'restaurante', precio: 150 },
+// Local defaults mirroring the `configurations` table in the DB (type 'money').
+// The DB is the source of truth; this default is used for development without
+// a backend and as a fallback if the DB is unreachable.
+export const DEFAULT_MONEY_CONFIG: MoneyConfig = {
+  initialSavings: 10000,
+  transport: { on_foot: 0, bus: 60, car: 100 },
+  food: {
+    options: [
+      { name: 'torta', price: 50 },
+      { name: 'comida corrida', price: 100 },
+      { name: 'restaurante', price: 150 },
     ],
   },
-  bebida: {
-    opciones: [
-      { nombre: 'agua', precio: 15 },
-      { nombre: 'refresco', precio: 25 },
-      { nombre: 'cafe', precio: 40 },
+  drinks: {
+    options: [
+      { name: 'agua', price: 15 },
+      { name: 'refresco', price: 25 },
+      { name: 'cafe', price: 40 },
     ],
   },
-  ropa: { oficina: 500, comoda: 300 },
-  actividades: { tv: 0, salir: 100 },
-  eventos: { accidente: 200, multa: 150, enfermedad: 300 },
+  clothes: { office: 500, comfortable: 300 },
+  activities: { tv: 0, goingOut: 100 },
+  events: { accident: 200, fine: 150, illness: 300 },
 };

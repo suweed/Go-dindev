@@ -24,17 +24,17 @@ Un día de juego = **24 horas de juego**, divididas en fases fijas. La suma de `
 
 | Fase | Horas de juego | Tiempo real | Notas |
 |---|---|---|---|
-| Despertar | 2 h | 0 (solo animación + decisión) | decisión: ir al trabajo o quedarse en casa |
+| Despertar | 1 h | 0 (solo animación + decisión) | decisión: ir al trabajo o quedarse en casa |
 | Transporte ida | 2 h | 0 | pantalla aleatoria; puede sumar tiempo extra |
 | Entrada a oficina (pasillo) | 0.5 h | 0 | eventos del pasillo pueden sumar tiempo |
 | Trabajo | 8 h | **5 min** (2 minijuegos × 2.5 min) | único tiempo real del día |
 | Salida de oficina | 0.5 h | 0 | pasillo de salida |
 | Transporte regreso | 2 h | 0 | pantalla aleatoria; puede sumar tiempo extra |
-| Tiempo libre | 3 h | 0 | el jugador lo termina cuando quiera |
+| Tiempo libre | 2 h | 0 | el jugador lo termina cuando quiera |
 | Dormir | 8 h | 0 | resumen de noche; recupera cansancio |
 | **Total** | **24 h** | **5 min** | 30 días ≈ 2.5 h reales de minijuegos |
 
-**Ejemplo del flujo (del documento):** al iniciar el día se muestra la animación de despertar y la decisión (continuar al trabajo / quedarse en casa). Si continúa, se activa la pantalla de transporte; según el evento puede haber tiempo extra. Al llegar a la puerta del edificio ya pasaron 2 h (despertar) + 2 h (transporte) = **4 h del día**. En el pasillo puede aumentar el tiempo; al llegar a la oficina se suma el tiempo fijo de entrada (0.5 h) más el extra si hubo. Empiezan las 8 h de trabajo con los 2 minijuegos. Al terminar, si no hay horas extra, se hace el trayecto de salida, el transporte de regreso y la llegada a casa. El tiempo libre lo termina el jugador cuando quiera, y al dormir se cierra el día.
+**Ejemplo del flujo (del documento):** al iniciar el día se muestra la animación de despertar y la decisión (continuar al trabajo / quedarse en casa). Si continúa, se activa la pantalla de transporte; según el evento puede haber tiempo extra. Al llegar a la puerta del edificio ya pasaron 1 h (despertar) + 2 h (transporte) = **3 h del día**. En el pasillo puede aumentar el tiempo; al llegar a la oficina se suma el tiempo fijo de entrada (0.5 h) más el extra si hubo. Empiezan las 8 h de trabajo con los 2 minijuegos. Al terminar, si no hay horas extra, se hace el trayecto de salida, el transporte de regreso y la llegada a casa. El tiempo libre lo termina el jugador cuando quiera, y al dormir se cierra el día.
 
 ### 2.3 Modelo
 

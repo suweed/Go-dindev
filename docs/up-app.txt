@@ -1,11 +1,33 @@
 Comandos para levantarla tú mismo (en la terminal de WSL):
 
-cd /var/www/html/god-in/client
-npm run dev
+    cd /var/www/html/god-in/client
+    npm run dev
 
-Y para el backend
+    Y para el backend
 
-cd /var/www/html/god-in/server
-npm run dev
+    cd /var/www/html/god-in/server
+    npm run dev
 
 
+comandos para levatnar la BD
+
+    1. Asegurar que PostgreSQL esté corriendo
+
+    sudo service postgresql start
+
+    2. Conectarte a la BD godin (modo interactivo)
+
+    psql -h localhost -U suweed -d godin
+    Te pedirá la contraseña: godin_dev
+
+    Una vez dentro de psql:
+
+    \dt                                    -- ver las tablas (games, configurations)
+    SELECT * FROM configurations;          -- ver las configuraciones de dinero
+    SELECT key, value, type FROM configurations WHERE type = 'money';
+    \q                                     -- salir
+
+    3. O en una sola línea (sin entrar a psql)
+
+    PGPASSWORD=godin_dev psql -h localhost -U suweed -d godin -c '\dt'
+    PGPASSWORD=godin_dev psql -h localhost -U suweed -d godin -c 'SELECT key, value FROM configurations ORDER BY key;'

@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
-function Cubo() {
+function Cube() {
   return (
     <mesh>
       <boxGeometry args={[1, 1, 1]} />
@@ -10,7 +10,7 @@ function Cubo() {
   )
 }
 
-function Piso() {
+function Floor() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
       <planeGeometry args={[10, 10]} />
@@ -25,8 +25,8 @@ function App() {
       <Canvas camera={{ position: [7, 7, 7], fov: 45 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 8, 5]} intensity={1} />
-        <Piso />
-        <Cubo />
+        <Floor />
+        <Cube />
         <OrbitControls />
       </Canvas>
     </div>

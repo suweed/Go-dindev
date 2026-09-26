@@ -14,5 +14,5 @@ app.get('/health', async (_req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`godin-server escuchando en http://localhost:${PORT}`);
+  console.log(`godin-server listening on http://localhost:${PORT}`);
 });

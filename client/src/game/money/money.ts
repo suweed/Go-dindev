@@ -1,62 +1,62 @@
-import type { ConfigDinero, EstadoDinero, Resultado, TipoTransporte } from './types';
+import type { MoneyConfig, MoneyState, Result, TransportType } from './types';
 
-export function crearEstadoDinero(config: ConfigDinero): EstadoDinero {
+export function createMoneyState(config: MoneyConfig): MoneyState {
   return {
-    valor: config.ahorroInicial,
-    ahorrosIniciales: config.ahorroInicial,
-    historial: [],
+    value: config.initialSavings,
+    initialSavings: config.initialSavings,
+    history: [],
   };
 }
 
-export function puedePagar(estado: EstadoDinero, monto: number): boolean {
-  return estado.valor >= monto;
+export function canPay(state: MoneyState, amount: number): boolean {
+  return state.value >= amount;
 }
 
-export function aplicarIngreso(
-  estado: EstadoDinero,
-  fuente: string,
-  monto: number,
-  dia: number,
-): Resultado {
-  const nuevo: EstadoDinero = {
-    ...estado,
-    valor: estado.valor + monto,
-    historial: [...estado.historial, { fuente, monto, dia }],
+export function addIncome(
+  state: MoneyState,
+  source: string,
+  amount: number,
+  day: number,
+): Result {
+  const next: MoneyState = {
+    ...state,
+    value: state.value + amount,
+    history: [...state.history, { source, amount, day }],
   };
-  return { ok: true, estado: nuevo };
+  return { ok: true, state: next };
 }
 
-export function aplicarGasto(
-  estado: EstadoDinero,
-  fuente: string,
-  monto: number,
-  dia: number,
-): Resultado {
-  if (!puedePagar(estado, monto)) {
-    return { ok: false, estado, error: `No alcanza para ${fuente}` };
+export function applyExpense(
+  state: MoneyState,
+  source: string,
+  amount: number,
+  day: number,
+): Result {
+  if (!canPay(state, amount)) {
+    return { ok: false, state, error: `Not enough money for ${source}` };
   }
-  const nuevo: EstadoDinero = {
-    ...estado,
-    valor: estado.valor - monto,
-    historial: [...estado.historial, { fuente, monto: -monto, dia }],
+  const next: MoneyState = {
+    ...state,
+    value: state.value - amount,
+    history: [...state.history, { source, amount: -amount, day }],
   };
-  return { ok: true, estado: nuevo };
+  return { ok: true, state: next };
 }
 
-export function pagarTransporte(
-  estado: EstadoDinero,
-  tipo: TipoTransporte,
-  config: ConfigDinero,
-  dia: number,
-): Resultado {
-  return aplicarGasto(estado, `transporte_${tipo}`, config.transporte[tipo], dia);
+export function payTransport(
+  state: MoneyState,
+  type: TransportType,
+  config: MoneyConfig,
+  day: number,
+): Result {
+  return applyExpense(state, `transport_${type}`, config.transport[type], day);
 }
 
-export function comprarItem(
-  estado: EstadoDinero,
+export function buyItem(
+  state: MoneyState,
   item: string,
-  precio: number,
-  dia: number,
-): Resultado {
-  return aplicarGasto(estado, item, precio, dia);
+  price: number,
+  day: number,
+): Result {
+  return applyExpense(state, item, price, day);
 }
