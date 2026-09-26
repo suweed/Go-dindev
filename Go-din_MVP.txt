@@ -1,0 +1,409 @@
+Go-din (MVP) camino base 
+--------------------------------------------------------------------------------------------------------
+
+	- apariencia
+		- juego de tiipo click and point, puzzle, accion, triller, investigación
+		- perspectiva de cámara cenital
+		- personaje y ubicaciones en 3D
+		- efecto de grabación tilt-shift
+	
+	-  tecnología
+		- react three fiber
+		- threejs
+		- poder abrirlo en mobile y desktop
+
+	- mecánicas
+		- El personaje puede jugar hasta 
+			- cumplir con el objetivo/proyecto en 30 días (30 min)(configurable)(happy path)
+				- pensar en el proyecto o los proyectos disponibles
+			- ser despedido
+				- llegar a los 30 días y no terminar el proyecto
+			- encontrar algún final
+		- definir rutina de personaje inicia oficina
+			- cada sesión es de 30 días por proyecto
+				- el proyecto se asigna aleatorio
+					- definir varios proyectos
+					- los proyectos son la meta final del proyecto
+						- cumplir los 30 días finaliza el juego
+							- el proyecto se cumple con las actividades de trabajo
+								- minijuegos
+				- cada día se deben cumplir con las actividades de trabajo
+					- cada actividad acumula porcentaje de proyecto final
+				- el día termina cuando se cumple el tiempo diario o se terminan las actividades
+				- cada día tiene un tiempo consumido por default
+					- podría cambiar por alguna influencia
+					- tiempo de transporte ida y regreso
+					- horario de comida
+
+------------------------------------------------------------------------------------------------------------
+
+cansancio
+
+	- el cansancio se incrementa dependiendo de las actividades, el cansancio tiene un gasto fijo igual que el tiempo
+	  cada día tiene un incremento por default
+	- el cansancio puede provocar pantallas de decisiones
+	- si no se maneja el cansancio y se llena genera un final de muerte por cansancio
+		- se vuelve loco
+		- se muere y se va un isekai
+		- se va a una montaña de ermitaño
+	- el cansancio se puede disminuir con ítems
+		- comida y bebida
+		- ropa
+
+------------------------------------------------------------------------------------------------------------
+
+tiempo 
+	
+	tiempo completo una sesión de proyecto
+		- juego: 30 días
+		- real: 20min
+
+	consumir tiempo
+		- default 
+			- juego - 24 hr - real 25min | 4 sesiones de 5min - 5min de cargas | 25min una sesión | un proyecto 
+			- 13 horas son tiempo que se descuenta solo por pasar el día
+			- 8 hora son de trabajo cuando se pueden hacer las actividades que aumenta porcentaje al proyeto
+			- 3 horas de tiempo libre
+		- descuentos de tiempo
+			- las horas extra en horario de trabajo
+				- se descuentan primero del tiempo libre
+				- se descuentan del tiempo de dormir
+				- se consumen las horas de sueño e inicia un nuevo día
+					- consume cansancio
+			- todas las actividades pude tomar tiempo extra, se pueden interrumpir los flujos
+				- ejemplo: tiempo de despertar, la animación será aleatoria, entonces al terminar la animación
+				  saldrán las opciones de aceptar lo ocurrido, dependiendo de la animación se descuenta tiempo
+				  extra y se agrega cansancio
+				- dependiendo del tiempo que tomo despertar pude ser que salga una opción de evitar ir al trabajo
+				  y quedarte en casa, lo que consumiría el tiempo de trabajo en casa, aumentándolo al tiempo libre
+				- el tiempo libre puedes hacer actividades que consumen dinero y cansancio
+					- todo ocurre en el cuarto
+						- una siguiente fase se hará el dep completo
+					- pensar las actividades del tiempo libre
+
+		- tiempos flujo
+			- tiempo de despertar
+				- juego: 2hr
+				- real: carga  tiempo parado para decisiones
+			- tiempo de transporte ida y regreso
+				- a pie
+					- juego: 2hr
+					- real: carga tiempo parado para decisiones
+			- tiempo de entrada a oficina
+				- juego: 30m
+				- real: carga tiempo parado para decisiones
+			- tiempo de trabajo
+				- juego: 8hr
+				- real: 5mn
+			- tiempo de salida de oficina
+				- juego: 30m
+				- real: carga tiempo parado para decisiones
+			- tiempo libre
+				- juego: 3hr
+				- real: carga tiempo parado para decisiones
+			- tiempo de dormir
+				- juego: 8hr
+				- real: carga tiempo parado para decisiones
+			
+		- extra
+			- cada tiempo puede tener su tiempo extra dependiendo de las decisiones
+				- el tiempo se debe ir descontando 
+					- se descuentan primero del tiempo libre
+					- se descuentan del tiempo de dormir
+					- se consumen las horas de sueño e inicia un nuevo día
+					-	 consume cansancio
+
+----------------------------------------------------------------------------------------------------------
+
+	- personaje
+		- analizar posibilidad de customizar personaje (algo sencillo)
+			- seleccionar sexo
+			- seleccionar peinado
+			- seleccionar ropa de oficina
+		- atributos de personaje
+			- cansancio
+			- dinero
+		- afectaciones posibles al personajes
+			- accidentes
+			- quedarse sin dinero
+			- enfermedades
+			- despido
+	- ubicaciones
+		- habitación principal
+			- cama
+			- escritorio
+			- televisión
+			- ropero
+			- minibar
+			- artículos de cuarto de Jove trabajador
+		- pasillo de entrada de edificio a oficina
+			- pasillo donde se pueden hacer algunas interacciones antes de llegar a la oficina
+			- el pasillo empieza en la entrada del edificio, se puede pasar al baño, entrar al sótano y entrar a la oficina
+		- baño 
+			- hombre y mujeres
+		- sótano de edificio
+			- cuarto de conexiones eléctricas
+			- estacionamiento de jefe
+			- cuarto de conserje
+			- pasillo y cuarto calderas
+		- oficina
+			- zona común
+			- oficinas individuales
+			- sala de juntas
+		- estacionamiento de edificio de departamento
+			- si se tiene carro se puede ver el estacionamiento
+
+---------------------------------------------------------------------------------------------------------
+
+		- configuración inicial en partida
+			- primera partida
+				- no cambian durante el tiempo de la sesión
+					- dinero
+						- algunas actividades cuestan dinero
+							- comprar comida
+							- comprar ropa
+							- cada día tiene un costo de transportes
+							- actividades extras
+					- cansancio
+						- las actividades cuestan cansancio
+						- cada día cuesta un porcentaje de cansancio
+						- decrementa con forme a las actividades del día
+						- se puede recuperar con items
+			- ropa
+				- cuesta dinero
+				- ítems que recuperan cansancio
+			- comida y bebidas
+				- cuesta dinero
+				- ítems para recuperar cansancio
+
+------------------------------------------------------------------------------------------------------------
+
+		- flujo de inicio de juego
+			- pantalla de iniciar juego/nueva partida (splash inicial con botones)
+			- solo primera vez 
+				- pantalla de bienvenida
+				- jugar tutorial en cuarto antes de primer día
+					- crear tutorial en cuarto antes de dormir antes de primer dia
+					- el tutorial pude afectar el inicio de día si se hace mal
+			- cada inicio de día
+				- pantalla de inicio de día (mañana)(despertar)
+					- cuesta tiempo fijo
+					- pantalla aleatorio de inicio de día
+						- despertar a tiempo
+						- despertar tarde
+						- posiblemente agregar mas
+				- pantalla de trayecto al trabajo
+					- cuesta tiempo dependiendo tipo de transporte
+					- cuesta dinero dependiendo tipo de transporte
+					- pantalla aleatoria de trayecto
+						- tipo de transporte desbloqueado
+							- sin problemas
+}								- cuesta tiempo de transporte
+								- definir tiempos de costos
+									- cambian con tipo de transporte
+							- con problemas
+								- cuesta tiempo extra
+									- cambian con tipo de transporte
+								- accidentes
+								- trafico
+				- pantalla de llegada a la oficina
+					- llegando a la oficina
+						- transición después de aceptar pantalla de trayecto al trabajo
+				- pantalla de inicio a trabajar
+					- tiene tiempo a cumplir (horario de trabajo)
+					- una vez que llega a su lugar
+					- carga menú de actividades de trabajo
+						- pensar actividades - minijuegos
+				- pantallas de actividades en horario de trabajo
+					- cuestan tiempo y/o dinero
+					- ida al baño
+					- salida a fumar
+					- salida a comprar
+				- pantalla de salida a comer
+					- cuenta tiempo
+					- cuesta dinero
+					- disminuye cansancio 
+				- pantalla de finalización de trabajar
+					- si se terminan las actividades de trabajo
+					- si se termina el tiempo del día
+						- muestra decisión de terminar día o continuar segundo tiempo
+					- se levanta de su lugar y se dirige a la salida de la oficina
+				- pantalla de salida de la oficina
+					- sale de la oficina y se dirige al transporte
+						- depende del tipo de transporte activo
+				- pantalla de trayecto a la casa
+					- cuesta tiempo dependiendo tipo de transporte
+					- cuesta dinero dependiendo tipo de transporte
+					- pantalla aleatoria de trayecto a casa
+						- depende del tipo de transporte
+							- sin problemas
+								- cuesta tiempo de transporte
+								- definir tiempos de costos
+									- cambian con tipo de transporte
+							- con problemas
+								- cuesta tiempo extra
+									- cambian con tipo de transporte
+								- accidentes
+								- trafico
+				- pantalla de fin de día (noche)(dormir)
+					- pantalla de finalización de día
+						- muestra decisiones nocturnas antes de dormir
+							- cuestan tiempo fijo
+							- cenar
+								- consecuencias aleatorias
+									- cuesta cansancio
+							- consumir multimedia
+								- cuesta tiempo extra
+								- aumenta cansancio
+							- podría haber mas
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+		- dia a dia
+			- después de pantalla de llegada a la entrada de la oficina a lugar de trabajo
+				- pasillo de la entrada del edificio a la oficina de trabajo
+				- pueden ocurrir actividades aleatorias
+					- pensar actividades
+						- encontrar compañeros
+						- actividad de decisión de usuario
+			- inicio de jornada de trabajo
+				- costo de tiempo
+				- aumenta cansancio
+				- cuando se llega de al entrada del edificio al lugar de trabajo
+				- marcar inicio de jornada (opcional)(cuenta puntos para el bono final)
+				- depende de hora de llegada
+					- a tiempo
+						- posibles distracciones
+							- encontrar compañeros de camino
+								- formas de esquivar a las personas
+							- aleatorio (pensar distracciones)
+					- retrasado
+						- dependiendo el tiempo
+							- se pueden mostrar caminos aleatorios
+						- penalizaciones 
+							- reponer tiempo tarde (aumenta tiempo fuera de horario)
+							- trabajar fin de semana
+							- agotamiento
+			- hora de comida
+				- muestra pantalla de decisión a medio tiempo de horario laboral
+					- tiempo de comida
+						- se puede extender
+							- costo de tiempo extra al final del turno
+					- salir a comer
+						- muestra animación de lugar de comida
+							- opciones de comida (menú)
+							- costos
+							- mejoras de cansancio
+					- no salir a comer
+						- costo de cansancio
+			- hora de salida
+				- muestra pantalla de decisión de hora de salida
+					- marcar salida de trabajo
+						- activar camino de lugar de trabajo a salida del edificio
+					- no salir continuar trabajando
+						- consume tiempo extra
+						- si no se marca manager pregunta por que no marco?
+							- reposición de tiempo entrada tarde
+							- adelantar trabajo
+							- esperar un rato solamente
+								- opción especial
+									- permitir moverse en la oficina
+										- no se adelanta trabajo
+										- tiempo configurable permitido
+										- se pueden hacer cosas de turno nocturno
+											- menos trabajar
+			
+------------------------------------------------------------------------------------------------------------------------------------------				 
+
+inicio
+- crear un splash con un godin 
+- opción de settings (izquierda inferior)
+- opción de Nuevo Juego/continuar (centro)
+- opción cargar partida (derecha inferior) (se muestra cuando ya hay una partida iniciada)
+- opción de settings
+	- configuraciones generales (video, audio, about) (fase 2)
+- opción de iniciar
+	- pantalla inicial
+	- comienza día
+	- trayecto al trabajo
+	- inicia jornada
+	- finaliza jornada
+	- trayecto de regreso a casa
+	- finaliza día
+- opción de redes
+	- panel con redes sociales de contacto (ultima fase)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+tutorial
+
+	- vamos a generar el tutorial para aprender las mecánicas de tiempo, cansancio, actividades y decisiones
+	- el tutorial se desarrolla en la habitación inicial
+	- el tutorial no cuenta como tiempo para el proyecto se desarrolla una noche antes del primer dia de trabajo
+	- el tutorial puede afectar al primer día
+
+
+	- acepta empezar en pantalla de bienvenida
+	- primera partida
+		- muestra animación de noche anterior a primer día
+			- preparar cosas para el primer día
+		- en la pantalla de al animación muestra las opciones
+			- continuar con el tutorial
+				- si incia el juego en la habitación
+				- el personaje se levanta de la cama 
+				- se presentan objetivos del tutorial
+					- preparar comida y bebida
+						- 1 iitem de cada uno
+					- preparar ropa de oficina
+					- contar dinero 
+				- se presentan los botones de dirección para caminar
+				- se activa el primer dialogo
+					- da la bienvenida al tutorial y se explica que estamos en la noche anterior al primer día
+					- explica que se debe preparar las cosas para el día siguiente
+						- comida
+						- bebida
+						- ropa
+					- debe moverse el personaje al minibar
+						- señalar minibar para que el personaje camine
+						- el personaje al llegar se presenta la mecánica de activar una acciona en algún objeto
+							- se abre el minibar y muestra menú de ítem en el anterior para obtener y prepararlos para el siguiente día
+						- guarda una bebida y una comida y se activa objetivo de preparar comida
+					- al terminar el minibar se prepara ropa
+						- se señala el ropero
+						- el personaje se acerca y se activa la accion de abrir ropero
+						- sale menú de ropero, menciona que se puede tener diferentes ropas comprándolas y que se debe preparar la ropa de oficina
+							- solo se tiene la ropa de oficina al principio
+						- se obtiene la ropa de oficina, se guarda y se activa objetivo de preparar ropa
+							- no se cambia la ropa actual que es la ropa de casa
+					- al terminar la ropa se señala la cama
+						- se acerca y se activa la opción para dormir
+							- se muestra dialogo para explicar la mecánica de dinero y cansancio
+								- presenta la mecánica del dinero
+									- informa que hay gastos por default como el transporte
+									- informa que se pueden comprar ítems y ropa
+								- presenta la mecánica del cansancio
+									- informa que hay cansancio por default como el trabajo pero se recupera un poco durmiendo o con ítems
+					- al terminar dialogo final se activa pantalla de despertar
+			- saltar tutorial
+				- continua con pantalla de despertar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
