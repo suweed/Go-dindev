@@ -1,0 +1,11 @@
+Comandos para levantarla tú mismo (en la terminal de WSL):
+
+cd /var/www/html/god-in/client
+npm run dev
+
+Y para el backend
+
+cd /var/www/html/god-in/server
+npm run dev
+
+

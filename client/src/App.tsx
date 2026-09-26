@@ -22,7 +22,7 @@ function Piso() {
 function App() {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [4, 6, 4], fov: 45 }}>
+      <Canvas camera={{ position: [7, 7, 7], fov: 45 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 8, 5]} intensity={1} />
         <Piso />

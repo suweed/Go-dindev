@@ -1,9 +1,33 @@
 Go-din (MVP) camino base 
 --------------------------------------------------------------------------------------------------------
 
+	- historia (lore)
+		- es el primer día de trabajo en un nuevo empleo
+			- fue despedido de su trabajo anterior
+			- andaba buscando otro trabajo antes de terminar con sus ahorros
+			- logra encontrar este nuevo trabajo justo a tiempo
+		- solo tiene 10,000 de dinero (ahorros) para administrar y llegar a fin de mes
+			- los 30 días del proyecto son el mes
+			- el dinero es fijo al inicio y va disminuyendo
+			- debe administrarse para no terminarlo antes del mes
+				- comprar comida
+				- comprar ropa
+				- otros ítems
+				- transporte
+		- el objetivo del juego es terminar el proyecto
+			- sin quedarse sin dinero
+			- sin morir de cansancio
+		- el dinero puede aumentar recibiendo bonos
+			- por resolver alguna actividad de trabajo rápido
+			- por descubrir algún secreto
+			- los bonos y secretos se establecen después
+		- el MVP es el flujo principal de la historia
+			- los finales se establecen después (habrá varios)
+		- a futuro (no en esta versión): al terminar el mes se cobra el salario y se pagan renta y gastos de la casa
+
 	- apariencia
 		- juego de tiipo click and point, puzzle, accion, triller, investigación
-		- perspectiva de cámara cenital
+		- perspectiva de cámara isométrica
 		- personaje y ubicaciones en 3D
 		- efecto de grabación tilt-shift
 	
